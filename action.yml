@@ -1,15 +1,22 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
 
 author: 'Louzet'
-
 name: 'Symfony Action'
-
 description: 'Run symfony via GithubAction.'
 
-branding:
-    icon: 'check'
-    color: 'blue'
+inputs:
+    env_file: 
+        description: 'environment variables declaration file'
+        required: true
+        default: '.env.dist'
 
 runs:
     using: 'docker'
     image: 'Dockerfile'
+    args:
+        - ${{ inputs.env_file }}
+
+
+branding:
+    icon: 'check'
+    color: 'blue'

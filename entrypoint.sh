@@ -2,19 +2,47 @@
 
 # Function to log result of a operation.
 add_log() {
-    
+
     gender=$1
     message=$2
 
-    if [ "$gender" = "info" ]; then
+    tick="✓"
+    cross="✗"
 
-        printf "\033[34;1m%s \033[0m\033[90;1m%s\033[0m\n" "$gender": "$message"
+    if [ "$gender" = "success" ]; then
+
+        mark="$tick"
+
+        printf "033[32;1m%s \033[34;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender": "$message"
 
     elif [ "$gender" = "error" ]; then
 
-        printf "\033[31;1m%s \033[0m\033[90;1m%s\033[0m\n" "$gender": "$message" && exit 1
+        mark="$cross"
+
+        printf "033[31;1m%s \033[31;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender": "$message" && exit 1
 
     fi
+}
+
+## extract database_name
+extract_database_name() {
+    env_file=$1
+
+    grep DATABASE_URL= > DATABASE_URL < "$env_file"
+    [ -z "$DATABASE_URL" ] && add_log "error" "DATABASE_URL variable was not found"
+
+    STRLENGTH=$(echo "%s" "$DATABASE_URL" | wc -c)
+    len=$(("$STRLENGTH" + 0))
+
+    printf "length of the dsn of the database: %s" "$len"
+
+    # if [ $(("$len" > 0)) ]; then
+    #     while IFS='/' read -ra DATABASE_URL; do
+    #         for part in "${ADDR[@]}"; do
+    #             echo "$part"
+    #         done
+    #     done <<< "$IN"
+    # fi
 }
 
 ## validate DATABASE_URL
@@ -22,17 +50,16 @@ validate_database_url() {
 
     env_file=$1
 
-    [ -z "$env_file" ] && add_log "error" "Missing .env or .env.dist file" && exit 1
+    [ -z "$env_file" ] && add_log "error" "Missing .env or .env.dist file"
 
-    grep DATABASE_URL= > DATABASE_URL < "$env_file"
-
-    [ -z "$DATABASE_URL" ] && add_log "error" "DATABASE_URL variable was not found"
+    extract_database_name "$env_file"
 
 }
 
 ## variables
 ENV_FILE=$1
 
+## process
 if [ -z "$ENV_FILE" ];then
 
     add_log "error" "Missing .env or .env.dist file"

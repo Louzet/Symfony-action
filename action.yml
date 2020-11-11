@@ -1,0 +1,15 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+
+author: 'Louzet'
+
+name: 'Symfony Action'
+
+description: 'Run symfony via GithubAction.'
+
+branding:
+    icon: 'check'
+    color: 'blue'
+
+runs:
+    using: 'docker'
+    image: 'Dockerfile'

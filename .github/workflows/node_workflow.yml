@@ -14,7 +14,7 @@ on:
 jobs:
   run:
     name: setup node before symfony-action
-    runs-on: ${{ maxtrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:

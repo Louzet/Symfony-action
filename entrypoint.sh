@@ -13,7 +13,7 @@ add_log() {
 
         mark="$tick"
 
-        printf "033[32;1m%s \033[34;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender": "$message"
+        printf "033[32;1m%s \033[0m\ \033[34;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender": "$message"
 
     elif [ "$gender" = "error" ]; then
 
@@ -29,12 +29,12 @@ extract_database_name() {
     env_file=$1
 
     grep DATABASE_URL= > DATABASE_URL < "$env_file"
-    [ -z "$DATABASE_URL" ] && add_log "error" "DATABASE_URL variable was not found"
+    [ -z "$DATABASE_URL" ] && add_log "error" "DATABASE_URL variable was not found \n"
 
     STRLENGTH=$(echo "%s" "$DATABASE_URL" | wc -c)
     len=$(("$STRLENGTH" + 0))
 
-    printf "length of the dsn of the database: %s" "$len"
+    printf "length of the dsn of the database: %s \n" "$len"
 
     # if [ $(("$len" > 0)) ]; then
     #     while IFS='/' read -ra DATABASE_URL; do
@@ -50,7 +50,7 @@ validate_database_url() {
 
     env_file=$1
 
-    [ -z "$env_file" ] && add_log "error" "Missing .env or .env.dist file"
+    [ -z "$env_file" ] && add_log "error" "Missing .env or .env.dist file \n"
 
     extract_database_name "$env_file"
 

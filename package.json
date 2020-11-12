@@ -1,0 +1,29 @@
+{
+    "name": "symfony-action",
+    "version": "1.0.0",
+    "private": false,
+    "description": "Setup Symfony 5+ application with GitHub Actions",
+    "main": "index.js",
+    "scripts": {
+        "prettier": "prettier --check **/*.js",
+        "format": "prettier --write **/*.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Louzet/symfony-action.git"
+    },
+    "keywords": [
+        "actions",
+        "symfony"
+    ],
+    "author": "Louzet",
+    "license": "MIT",
+    "dependencies": {
+        "@actions/core": "^1.2.6",
+        "@actions/exec": "^1.0.4",
+        "fs": "0.0.1-security"
+    },
+    "devDependencies": {
+        "prettier": "^2.1.2"
+    }
+}

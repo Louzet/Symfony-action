@@ -5,8 +5,11 @@ const path = require('path');
 const getEnvironmentsVariables = ({ env_file }) => {
     if (env_file) {
         const dirname = path.dirname(env_file);
+        console.log(dirname);
         const env = fs.readFileSync(path.join(dirname, env_file), "utf8");
+        console.log(env);
         const vars = require("dotenv").parse(env);
+        console.log(vars);
 
         const newVars = [];
         

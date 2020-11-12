@@ -5,16 +5,14 @@ name: 'Symfony Action'
 description: 'Run symfony via GithubAction.'
 
 inputs:
-    env_file: 
-        description: 'environment variables declaration file'
+    env_file:
+        description: "Path to an localized env file"
         required: true
-        default: '.env.dist'
+        default: ".env.dist"
 
 runs:
-    using: 'docker'
-    image: 'Dockerfile'
-    args:
-        - ${{ inputs.env_file }}
+    using: 'node12'
+    main: 'index.js'
 
 
 branding:

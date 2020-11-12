@@ -12,14 +12,12 @@ add_log() {
     if [ "$gender" = "success" ]; then
 
         mark="$tick"
-
-        printf "033[32;1m%s \033[0m\ \033[34;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender": "$message"
+        printf "\033[32;1m%s \033[0m\033[34;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender": "$message"
 
     elif [ "$gender" = "error" ]; then
 
         mark="$cross"
-
-        printf "033[31;1m%s \033[31;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender": "$message" && exit 1
+        printf "\033[31;1m%s \033[0m\033[34;1m%s \033[0m\033[90;1m%s\033[0m\n" "$mark" "$gender" "$message" && exit 1
 
     fi
 }
@@ -29,7 +27,8 @@ extract_database_name() {
     env_file=$1
 
     grep DATABASE_URL= > DATABASE_URL < "$env_file"
-    [ -z "$DATABASE_URL" ] && add_log "error" "DATABASE_URL variable was not found \n"
+    printf "%s" "$DATABSE_URL"
+    ##[ -z "$DATABASE_URL" ] && add_log "error" "DATABASE_URL variable was not found \n"
 
     STRLENGTH=$(echo "%s" "$DATABASE_URL" | wc -c)
     len=$(("$STRLENGTH" + 0))
@@ -66,8 +65,6 @@ if [ -z "$ENV_FILE" ];then
 
 else
     add_log "info" "The $ENV_FILE file successfully was found !"
-
-    cat "$ENV_FILE";
 
     validate_database_url "$ENV_FILE"
 fi

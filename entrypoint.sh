@@ -27,13 +27,12 @@ extract_database_name() {
     env_file=$1
 
     grep DATABASE_URL= > DATABASE_URL < "$env_file"
-    printf "%s" "$DATABSE_URL"
+    add_log "success" "database dsn: $DATABSE_URL"
     ##[ -z "$DATABASE_URL" ] && add_log "error" "DATABASE_URL variable was not found \n"
 
     STRLENGTH=$(echo "%s" "$DATABASE_URL" | wc -c)
-    len=$(("$STRLENGTH" + 0))
 
-    printf "length of the dsn of the database: %s \n" "$len"
+    printf "length of the dsn of the database: %s \n" "$STRLENGTH"
 
     # if [ $(("$len" > 0)) ]; then
     #     while IFS='/' read -ra DATABASE_URL; do

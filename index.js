@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const fs = require('fs');
 const path = require('path');
+const { exit } = require('process');
 
 const getEnvironmentsVariables = ({ env_file }) => {
     if (env_file) {
@@ -25,5 +26,6 @@ let inputVariables = {
 
 (async () => {
     let variables = getEnvironmentsVariables(inputVariables.env_file);
-    console.warn(variables);
+    console.warn(variables); exit;
+    debugger;
 })();

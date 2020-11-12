@@ -17,7 +17,7 @@ const getEnvironmentsVariables = ({ env_file }) => {
 }
 
 let inputVariables = {
-    env_file = core.getInput('env_file')
+    env_file: core.getInput('env_file')
 };
 
 (async () => {

@@ -5,6 +5,10 @@ name: 'Symfony Action'
 description: 'Run symfony via GithubAction.'
 
 inputs:
+    dir:
+        description: "The project directory"
+        required: true
+        default: ""
     env_file:
         description: "Path to an localized env file"
         required: true

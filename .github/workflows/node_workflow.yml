@@ -35,4 +35,5 @@ jobs:
       - name: symfony action
         uses: Louzet/symfony-action@master
         with:
+          dir: ""
           env_file: '.env'

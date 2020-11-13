@@ -1,5 +1,5 @@
-import { getInputs } from './getInputs';
-import { Inputs } from './types';
+import {getInputs} from './getInputs';
+import {Inputs} from './types';
 
 export const run = () => {
   try {
@@ -8,8 +8,7 @@ export const run = () => {
   } catch (error) {
     throw new Error(`Action failed with "${error.message}"`);
   }
-}
-
+};
 
 // const getEnvironmentVariables = ({ env_file }) => {
 //   if (env_file) {

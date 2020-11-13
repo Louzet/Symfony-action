@@ -1,7 +1,7 @@
 import {getInputs} from './getInputs';
 import {Inputs} from './types';
 
-export const run = () => {
+export const run = (): void => {
   try {
     const inputs: Inputs = getInputs();
     console.warn(inputs);

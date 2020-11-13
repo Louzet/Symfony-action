@@ -5,28 +5,27 @@ module.exports = {
     node: true
   },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'prettier/@typescript-eslint'
   ],
-  plugins: ["@typescript-eslint"],
+  plugins: ['@typescript-eslint'],
   globals: {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    sourceType: "module",
+    sourceType: 'module',
     ecmaVersion: 2020,
-    project: "./tsconfig.json",
+    project: './tsconfig.json',
     tsconfigRootDir: __dirname,
-    createDefaultProgram: true,
+    createDefaultProgram: true
   },
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
-    "import/no-extraneous-dependencies": "off"
+    'import/no-extraneous-dependencies': 'off'
   }
-}
+};

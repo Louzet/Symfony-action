@@ -33,7 +33,7 @@ jobs:
         run: npm install
 
       - name: Run prettier
-        run: npm run format:check
+        run: npm run prettier:format:check
 
       - name: Run eslint
         run: npm run lint

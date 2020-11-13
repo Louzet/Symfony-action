@@ -3,14 +3,11 @@ const fs = require('fs');
 const path = require('path');
 const { exit } = require('process');
 
-const getEnvironmentsVariables = ({ env_file }) => {
+const getEnvironmentVariables = ({ env_file }) => {
     if (env_file) {
         const dirname = path.dirname(env_file);
-        console.log(dirname);
         const env = fs.readFileSync(path.join(dirname, env_file), "utf8");
-        console.log(env);
         const vars = require("dotenv").parse(env);
-        console.log(vars);
 
         const newVars = [];
         
@@ -22,12 +19,22 @@ const getEnvironmentsVariables = ({ env_file }) => {
     }
 }
 
+async function readFile(filePath) {
+    try {
+        const data = await fs.readFile(filePath);
+        console.log(data.toString());
+    } catch (error) {
+        console.error(`Got an error trying to read the file: ${error.message}`);
+    }
+}
+
 let inputVariables = {
     env_file: core.getInput('env_file')
 };
 
 (async () => {
-    let variables = getEnvironmentsVariables(inputVariables.env_file);
+    readFile(inputVariables.env_file);
+    let variables = getEnvironmentVariables(inputVariables.env_file);
     console.warn(variables); exit;
     debugger;
 })();

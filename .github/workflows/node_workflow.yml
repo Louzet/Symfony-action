@@ -31,3 +31,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: symfony action
+        uses: Louzet/symfony-action@master
+        with:
+          env_file: '.env'

@@ -17,6 +17,8 @@ const getEnvironmentsVariables = ({ env_file }) => {
         for (let key in vars) {
             newVars.push(key + "=" + vars[key]);
         }
+
+        return newVars;
     }
 }
 

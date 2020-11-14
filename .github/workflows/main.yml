@@ -1,4 +1,4 @@
-name: Node workflow
+name: Main
 
 on:
   pull_request:
@@ -13,7 +13,6 @@ on:
 
 jobs:
   node:
-    name: setup node before symfony-action
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

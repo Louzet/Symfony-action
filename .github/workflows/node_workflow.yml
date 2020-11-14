@@ -33,6 +33,7 @@ jobs:
         run: npm install
 
       - name: Run prettier
+        if: startsWith(matrix.os, 'ubuntu-latest') or startsWith(matrix.os, 'macos-latest')
         run: npm run prettier:format:check
 
       - name: Run eslint

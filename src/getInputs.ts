@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+
 import {Inputs} from './types';
 
 export const getInputs = (): Inputs => {

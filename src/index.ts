@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+
 import * as main from './main';
 
 (async (): Promise<void> => {

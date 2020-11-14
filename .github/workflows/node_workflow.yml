@@ -37,6 +37,7 @@ jobs:
         run: npm run prettier:format:check
 
       - name: Run eslint
+        if: startsWith(matrix.os, 'ubuntu-latest') || startsWith(matrix.os, 'macos-latest')
         run: npm run lint
 
       - name: Run build

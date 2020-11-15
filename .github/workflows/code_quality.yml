@@ -4,12 +4,12 @@ on:
   pull_request:
     branches:
       - master
-      - dev
+      - develop
 
   push:
     branches:
       - master
-      - dev
+      - develop
 
 jobs:
   code_quality:

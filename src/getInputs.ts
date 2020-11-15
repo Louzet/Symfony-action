@@ -10,3 +10,10 @@ export const getInputs = (): Inputs => {
 
   return inputs;
 };
+
+export const showInputs = (inputs: Inputs): void => {
+  core.info(`\
+[INFO] Directory: ${inputs.dir}
+[INFO] EnvFile: ${inputs.env_file}
+`);
+};

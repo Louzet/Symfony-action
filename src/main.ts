@@ -1,10 +1,22 @@
-import {getInputs} from './getInputs';
+import {readFileSync} from 'fs';
+import * as path from 'path';
+
+import * as core from '@actions/core';
+
+import {getInputs, showInputs} from './getInputs';
 import {Inputs} from './types';
 
 export const run = (): void => {
   try {
+    core.info('[INFO] Usage https://github.com/louzet/symfony-action');
+
     const inputs: Inputs = getInputs();
-    console.warn(inputs);
+    core.startGroup('Show inputs');
+    showInputs(inputs);
+    core.endGroup();
+
+    const envs = readFileSync(path.join(inputs.dir, inputs.env_file), 'utf8');
+    console.warn(envs);
   } catch (error) {
     throw new Error(`Action failed with "${error.message}"`);
   }
